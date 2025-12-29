@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carko237 - Clothes Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Carko<span style="color: green;">2</span><span style="color: red;">3</span><span style="color: yellow;">7</span></h1>
+        <input type="text" class="search-bar" placeholder="Search clothes...">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#cart">Cart</a>
+        </nav>
+    </header>
+
+<div class="carousel-container">
+        <div class="carousel-slide slide-1 active">
+            <div class="pattern-overlay"></div>
+            <div class="star"></div>
+            <div class="badge">🇨🇲 Proudly Cameroonian</div>
+            <div class="slide-content">
+                <div class="logo">CARKO237</div>
+                <div class="tagline">Your Premier Marketplace in Cameroon</div>
+                <a href="#" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+
+        <div class="carousel-slide slide-2">
+            <div class="pattern-overlay"></div>
+            <div class="badge">✨ New Arrivals</div>
+            <div class="slide-content">
+                <div class="logo">CARKO237</div>
+                <div class="tagline">Discover Quality Products at Your Fingertips</div>
+                <a href="#" class="cta-button">Explore Collection</a>
+            </div>
+        </div>
+
+        <div class="carousel-slide slide-3">
+            <div class="pattern-overlay"></div>
+            <div class="star"></div>
+            <div class="badge">🚚 Fast Delivery</div>
+            <div class="slide-content">
+                <div class="logo">CARKO237</div>
+                <div class="tagline">From Yaoundé to Douala and Beyond</div>
+                <a href="#" class="cta-button">Get Started</a>
+            </div>
+        </div>
+
+        <button class="carousel-arrow arrow-left" onclick="prevSlide()">‹</button>
+        <button class="carousel-arrow arrow-right" onclick="nextSlide()">›</button>
+
+        <div class="carousel-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+    </div>
+
+    <section class="products" id="products">
+        <div class="product-card">
+            <img src="1.jpeg" alt="T-Shirt">
+            <h3>Classic T-Shirt</h3>
+            <p>Premium quality cotton</p>
+            <div class="price">$12.99</div>
+            <button>Add to Cart</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="2.jpeg" alt="Jeans">
+            <h3>Blue Jeans</h3>
+            <p>Comfortable fit</p>
+            <div class="price">$39.99</div>
+            <button>Add to Cart</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="2.jpeg" alt="Dress">
+            <h3>Summer Dress</h3>
+            <p>Lightweight fabric</p>
+            <div class="price">$34.99</div>
+            <button>Add to Cart</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="1.jpeg" alt="Jacket">
+            <h3>Winter Jacket</h3>
+            <p>Warm and stylish</p>
+            <div class="price">$89.99</div>
+            <button>Add to Cart</button>
+        </div>
+    </section>
+
+
+    
+    
+    <footer id="contact">
+        <h3>Carko237 - Your Fashion Destination</h3>
+        <p>Email: support@Carko237.com | Phone: +237 688 104 091</p>
+        <p>&copy; 2025 Carko237. All rights reserved.</p>
+    </footer>
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
