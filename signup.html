@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Carko237</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #CE1126 0%, #009933 50%, #FFCC00 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
+            pointer-events: none;
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .signup-left {
+            flex: 1;
+            background: linear-gradient(135deg, #009933 0%, #006622 100%);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .signup-left::before {
+            content: "\f005";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            font-size: 250px;
+            color: rgba(255, 204, 0, 0.15);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .signup-right {
+            flex: 1.2;
+            padding: 50px 50px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            color: #CE1126;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+
+        .left-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .left-logo {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-tagline {
+            font-size: 26px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .flag-emoji {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .benefits {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .benefit-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 204, 0, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        label i {
+            margin-right: 8px;
+            color: #009933;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f8f8;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #009933;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 153, 51, 0.1);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .strength-weak { width: 33%; background: #CE1126; }
+        .strength-medium { width: 66%; background: #FFCC00; }
+        .strength-strong { width: 100%; background: #009933; }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+
+        .terms-checkbox a {
+            color: #CE1126;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #009933 0%, #006622 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 153, 51, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 153, 51, 0.4);
+        }
+
+        .signup-button:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
+
+        .social-signup {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-button {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-button:hover {
+            border-color: #009933;
+            background: #f8f8f8;
+        }
+
+        .social-button i {
+            font-size: 18px;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #CE1126;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .input-icon input {
+            padding-left: 45px;
+        }
+
+        @media (max-width: 968px) {
+            .signup-container {
+                flex-direction: column;
+            }
+
+            .signup-left {
+                padding: 40px 30px;
+            }
+
+            .signup-right {
+                padding: 40px 30px;
+                max-height: none;
+            }
+
+            .benefits {
+                display: none;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .form-row .form-group {
+                margin-bottom: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-left">
+            <div class="left-content">
+                <div class="flag-emoji">🇨🇲</div>
+                <div class="left-logo">CARKO237</div>
+                <div class="left-tagline">Join Cameroon's Leading E-Commerce Platform</div>
+
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div>Access Thousands of Products</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-truck-fast"></i></div>
+                        <div>Free Delivery on Orders Over 10,000 FCFA</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div>Secure & Safe Transactions</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-gift"></i></div>
+                        <div>Exclusive Deals & Rewards</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                        <div>24/7 Customer Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signup-right">
+            <div class="logo">CARKO237</div>
+            <div class="subtitle">Create your account and start shopping!</div>
+
+            <div class="form-row">
+                <div class="form-group" method="post">
+                    <label><i class="fas fa-user"></i>First Name</label>
+                    <input type="text" placeholder="Enter your first name" id="firstName">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i>Last Name</label>
+                    <input type="text" placeholder="Enter your last name" id="lastName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i>Email Address</label>
+                <input type="email" placeholder="example@email.com" id="email">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i>Phone Number</label>
+                <input type="tel" placeholder="+237 6XX XXX XXX" id="phone">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i>City</label>
+                    <select id="city">
+                        <option value="">Select your city</option>
+                        <option value="yaounde">Yaoundé</option>
+                        <option value="douala">Douala</option>
+                        <option value="bafoussam">Bafoussam</option>
+                        <option value="bamenda">Bamenda</option>
+                        <option value="garoua">Garoua</option>
+                        <option value="maroua">Maroua</option>
+                        <option value="ngaoundere">Ngaoundéré</option>
+                        <option value="buea">Buea</option>
+                        <option value="limbe">Limbé</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-venus-mars"></i>Gender</label>
+                    <select id="gender">
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i>Password</label>
+                <div class="password-container">
+                    <input type="password" placeholder="Create a strong password" id="password" oninput="checkPasswordStrength()">
+                    <button class="toggle-password" type="button" onclick="togglePassword('password', this)">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div class="password-strength-bar" id="strengthBar"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i>Confirm Password</label>
+                <div class="password-container">
+                    <input type="password" placeholder="Confirm your password" id="confirmPassword">
+                    <button class="toggle-password" type="button" onclick="togglePassword('confirmPassword', this)">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms">
+                <label for="terms" style="margin: 0; font-weight: 400;">
+                    I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button class="signup-button" onclick="handleSignup()">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+            </button>
+
+            <div class="divider">OR SIGN UP WITH</div>
+
+            <div class="social-signup">
+                <button class="social-button">
+                    <i class="fab fa-google"></i>
+                    Google
+                </button>
+                <button class="social-button">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+                </button>
+            </div>
+
+            <div class="login-link">
+                Already have an account? <a href="signin.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+<script>
+function handleSignup() {
+    const data = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        city: document.getElementById('city').value,
+        gender: document.getElementById('gender').value,
+        password: document.getElementById('password').value
+    };
+
+    fetch("api/signup.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status === "success") {
+            alert("Account created successfully!");
+            window.location.href = "signin.html";
+        } else {
+            alert(res.message);
+        }
+    })
+    .catch(() => alert("Server error"));
+}
+</script>
+
+</body>
+</html>

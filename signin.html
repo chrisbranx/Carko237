@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up - Carko237</title>
+    <title>Sign in - Carko237</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -446,6 +446,40 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
+        
+        .login-link {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #CE1126;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .input-icon input {
+            padding-left: 45px;
+        }
+
+
         @media (max-width: 968px) {
             .auth-container {
                 flex-direction: column;
@@ -511,15 +545,6 @@
         <div class="auth-right">
             <div class="logo">CARKO237</div>
 
-            <div class="tab-buttons">
-                <button class="tab-button active" onclick="switchTab('login')">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-                <button class="tab-button" onclick="switchTab('signup')">
-                    <i class="fas fa-user-plus"></i> Sign Up
-                </button>
-            </div>
-
             <!-- LOGIN FORM -->
             <div id="loginForm" class="form-section active">
                 <div class="subtitle">Welcome back! Login to your account</div>
@@ -564,255 +589,46 @@
                         Facebook
                     </button>
                 </div>
+            <div class="login-link">
+                Don't have an account? <a href="signup.html">Signup</a>
+            </div>
             </div>
 
-            <!-- SIGNUP FORM -->
-            <div id="signupForm" class="form-section">
-                <div class="subtitle">Create your account and start shopping!</div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i>First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="firstName">
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i>Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lastName">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-envelope"></i>Email Address</label>
-                    <input type="email" placeholder="example@email.com" id="email">
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-phone"></i>Phone Number</label>
-                    <input type="tel" placeholder="+237 6XX XXX XXX" id="phone">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label><i class="fas fa-map-marker-alt"></i>City</label>
-                        <select id="city">
-                            <option value="">Select your city</option>
-                            <option value="yaounde">Yaoundé</option>
-                            <option value="douala">Douala</option>
-                            <option value="bafoussam">Bafoussam</option>
-                            <option value="bamenda">Bamenda</option>
-                            <option value="garoua">Garoua</option>
-                            <option value="maroua">Maroua</option>
-                            <option value="ngaoundere">Ngaoundéré</option>
-                            <option value="buea">Buea</option>
-                            <option value="limbe">Limbé</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-venus-mars"></i>Gender</label>
-                        <select id="gender">
-                            <option value="">Select gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Prefer not to say</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-lock"></i>Password</label>
-                    <div class="password-container">
-                        <input type="password" placeholder="Create a strong password" id="password" oninput="checkPasswordStrength()">
-                        <button class="toggle-password" type="button" onclick="togglePassword('password', this)">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <div class="password-strength">
-                        <div class="password-strength-bar" id="strengthBar"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-lock"></i>Confirm Password</label>
-                    <div class="password-container">
-                        <input type="password" placeholder="Confirm your password" id="confirmPassword">
-                        <button class="toggle-password" type="button" onclick="togglePassword('confirmPassword', this)">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="terms-checkbox">
-                    <input type="checkbox" id="terms">
-                    <label for="terms" style="margin: 0; font-weight: 400;">
-                        I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
-                    </label>
-                </div>
-
-                <button class="auth-button" onclick="handleSignup()">
-                    <i class="fas fa-user-plus"></i>
-                    Create Account
-                </button>
-
-                <div class="divider">OR SIGN UP WITH</div>
-
-                <div class="social-auth">
-                    <button class="social-button">
-                        <i class="fab fa-google"></i>
-                        Google
-                    </button>
-                    <button class="social-button">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
+<script>
+function handleLogin() {
+    const email = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-   <script>
-    function switchTab(tab) {
-        const loginForm = document.getElementById('loginForm');
-        const signupForm = document.getElementById('signupForm');
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const leftTagline = document.getElementById('leftTagline');
+    if (!email || !password) {
+        alert("Email and password required");
+        return;
+    }
 
-        if (tab === 'login') {
-            loginForm.classList.add('active');
-            signupForm.classList.remove('active');
-            tabButtons[0].classList.add('active');
-            tabButtons[1].classList.remove('active');
-            leftTagline.textContent = 'Your Premier Marketplace in Cameroon';
+    fetch("api/signin.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,     
+            password: password
+        })
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status === "success") {
+            alert("Welcome back!");
+            window.location.href = "index.php";
         } else {
-            signupForm.classList.add('active');
-            loginForm.classList.remove('active');
-            tabButtons[1].classList.add('active');
-            tabButtons[0].classList.remove('active');
-            leftTagline.textContent = "Join Cameroon's Leading E-Commerce Platform";
+            alert(res.message);
         }
-    }
-
-    function togglePassword(fieldId, button) {
-        const input = document.getElementById(fieldId);
-        const icon = button.querySelector('i');
-
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.replace('fa-eye', 'fa-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.replace('fa-eye-slash', 'fa-eye');
-        }
-    }
-
-    function checkPasswordStrength() {
-        const password = document.getElementById('password').value;
-        const bar = document.getElementById('strengthBar');
-
-        bar.className = 'password-strength-bar';
-
-        if (!password) return;
-
-        let strength = 0;
-        if (password.length >= 8) strength++;
-        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-        if (/\d/.test(password)) strength++;
-        if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-        if (strength <= 1) bar.classList.add('strength-weak');
-        else if (strength <= 3) bar.classList.add('strength-medium');
-        else bar.classList.add('strength-strong');
-    }
-
-    /* ================= LOGIN ================= */
-    function handleLogin() {
-        const username = document.getElementById('loginUsername').value.trim();
-        const password = document.getElementById('loginPassword').value.trim();
-
-        if (!username || !password) {
-            alert("Please fill in all fields");
-            return;
-        }
-
-        fetch("login.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === "success") {
-                alert("Login successful! Welcome to Carko237 🚀");
-                // window.location.href = "dashboard.html";
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(() => alert("Server error. Try again."));
-    }
-
-    /* ================= SIGNUP ================= */
-    function handleSignup() {
-        const firstName = firstNameInput.value;
-        const lastName = lastNameInput.value;
-        const email = emailInput.value;
-        const phone = phoneInput.value;
-        const city = citySelect.value;
-        const gender = genderSelect.value;
-        const password = passwordInput.value;
-        const confirmPassword = confirmPasswordInput.value;
-        const terms = document.getElementById('terms').checked;
-
-        if (!firstName || !lastName || !email || !phone || !city || !gender || !password || !confirmPassword) {
-            alert("Please fill in all fields");
-            return;
-        }
-
-        if (!terms) {
-            alert("Please accept the Terms & Conditions");
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match");
-            return;
-        }
-
-        fetch("signup.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                firstName,
-                lastName,
-                email,
-                phone,
-                city,
-                gender,
-                password
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === "success") {
-                alert("Account created successfully 🎉");
-                switchTab('login');
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(() => alert("Server error. Try again."));
-    }
-
-    /* === INPUT SHORTCUTS === */
-    const firstNameInput = document.getElementById('firstName');
-    const lastNameInput = document.getElementById('lastName');
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
-    const citySelect = document.getElementById('city');
-    const genderSelect = document.getElementById('gender');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
+    })
+    .catch(() => alert("Server error"));
+}
 </script>
+
 
 </body>
 </html>
